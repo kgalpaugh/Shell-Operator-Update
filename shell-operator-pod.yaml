@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: shell-operator
+spec:
+  containers:
+  - name: shell-operator
+    image: kgalpaugh/shell-operator-update:latest
+    imagePullPolicy: Always
+  serviceAccountName: monitor-pods-acc
