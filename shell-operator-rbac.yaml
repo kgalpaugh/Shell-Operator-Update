@@ -4,7 +4,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: monitor-pods-acc
-  # namespace: test
+  namespace: test
 
 ---
 # powershell version: kubectl create clusterrole monitor-pods --verb=get,watch,list --resource=pods
@@ -12,25 +12,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: monitor-pods
-  # namespace: test
+  namespace: test
 rules:
 - apiGroups: [""]
   resources: ["pods"]
   verbs: ["get", "watch", "list"]
-
-# ---
-# # powershell version: kubectl create clusterrolebinding monitor-pods --clusterrole=monitor-pods --serviceaccount=example-monitor-pods:monitor-pods-acc
-# apiVersion: rbac.authorization.k8s.io/v1   # also try w/o "v1"
-# kind: ClusterRoleBinding
-# metadata:
-#   name: monitor-pods
-#   namespace: test
-# roleRef:
-#   apiGroup: rbac.authorization.k8s.io
-#   kind: ClusterRole
-#   name: monitor-pods
-#   namespace: test
-# subjects:
-# - kind: ServiceAccount
-#   name: monitor-pods-acc
-#   namespace: test
